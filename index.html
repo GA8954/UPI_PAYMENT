@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Pay Securely | Payment Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">₹</div>
+    <div>
+      <div class="brand-name" id="siteTitle">Pay Securely</div>
+      <div class="brand-subtitle">Simple payments, directly to the account holder</div>
+    </div>
+    <span class="secure-pill">● UPI / Bank Transfer</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">QUICK & EASY PAYMENT</p>
+      <h1>Send a payment</h1>
+      <p class="hero-copy">Scan the QR code with your UPI app, or use the bank transfer details below.</p>
+    </section>
+
+    <section class="payment-grid">
+      <article class="card qr-card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">OPTION 01</p>
+            <h2>Pay using UPI</h2>
+          </div>
+          <span class="icon-bubble">▦</span>
+        </div>
+
+        <label for="amount">Payment amount (₹)</label>
+        <div class="amount-input-wrap">
+          <span>₹</span>
+          <input id="amount" type="number" min="1" step="0.01" placeholder="Enter amount (optional)" />
+        </div>
+
+        <div class="qr-frame">
+          <div id="qrcode" aria-label="UPI payment QR code"></div>
+          <div id="qrFallback" class="qr-fallback hidden">Add your real UPI ID in <code>config.js</code> to generate your QR code.</div>
+        </div>
+        <p class="qr-caption">Open Google Pay, PhonePe, Paytm or another UPI app and scan this code.</p>
+        <button id="payUpiBtn" class="button primary full-width">Open UPI app</button>
+        <button id="downloadQrBtn" class="button secondary full-width">Download QR code</button>
+        <div class="upi-id-line">
+          <span>UPI ID</span>
+          <strong id="upiIdText">9627019097-1@nyes</strong>
+          <button class="copy-button" data-copy="upi" aria-label="Copy UPI ID">Copy</button>
+        </div>
+        <p class="small-note">The UPI app will ask you to review and authorize the payment. Never share your UPI PIN.</p>
+      </article>
+
+      <article class="card bank-card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">OPTION 02</p>
+            <h2>Bank transfer</h2>
+          </div>
+          <span class="icon-bubble">₹</span>
+        </div>
+        <p class="muted">Use these details in your bank app for an IMPS, NEFT or other supported transfer.</p>
+
+        <div class="detail-list">
+          <div class="detail-row">
+            <span>RATION CARD </span>
+            <strong id="accountHolder">malati</strong>
+            <button class="copy-button" data-copy="holder">Copy</button>
+          </div>
+          <div class="detail-row">
+            <span>india post payment bank </span>
+            <strong id="bankName">india post payment bank </strong>
+            <button class="copy-button" data-copy="bank">Copy</button>
+          </div>
+          <div class="detail-row">
+            <span>054410408230</span>
+            <strong id="accountNumber" class="sensitive">054410408230</strong>
+            <button class="copy-button" data-copy="account">Copy</button>
+          </div>
+          <div class="detail-row">
+            <span>e</span>
+            <strong id="ifscCode">IPOS0000001</strong>
+            <button class="copy-button" data-copy="ifsc">Copy</button>
+          </div>
+          <div class="detail-row">
+            <span>Branch</span>
+            <strong id="branchName"> india post</strong>
+            <button class="copy-button" data-copy="branch">Copy</button>
+          </div>
+        </div>
+
+        <button class="button secondary full-width" id="copyAllBtn">Copy bank details</button>
+        <div class="notice">
+          <strong>Important</strong>
+          <p>Double-check the account holder and account details in your banking app before confirming a transfer.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="trust-row">
+      <div><span class="trust-icon">✓</span><div><strong>Direct transfer</strong><p>Payments go to the account you configure.</p></div></div>
+      <div><span class="trust-icon">⌁</span><div><strong>Works on mobile</strong><p>Designed for phones, tablets and desktops.</p></div></div>
+      <div><span class="trust-icon">!</span><div><strong>Verify payments</strong><p>Check your bank/UPI app for successful receipt.</p></div></div>
+    </section>
+
+    <footer>
+      <p>Payment page for <strong id="footerName">RATION CARD</strong></p>
+      <p class="footer-note">This page does not collect UPI PINs, OTPs or banking passwords and cannot independently verify payments.</p>
+    </footer>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
